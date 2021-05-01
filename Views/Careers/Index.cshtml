@@ -1,0 +1,20 @@
+@model IEnumerable<InstituteWeb.Models.ViewModels.CareerViewModel>
+
+@{
+    ViewData["Title"] = "Careers";
+}
+
+<h1>Careers</h1>
+<div class = "container-card d-flex justify-content-between flex-wrap">
+@foreach (var item in Model)
+{
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <input type ="hidden" value="@item.CareerID"/>
+        <h5 class="card-title">@item.Name</h5>    
+        <a asp-controller="Subjects" asp-action="Index" asp-route-idCareer="@item.CareerID" class="card-link">View Subjects</a>
+      </div>
+    </div>
+}
+</div>
+

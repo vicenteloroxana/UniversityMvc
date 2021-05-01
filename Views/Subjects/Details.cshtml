@@ -1,0 +1,63 @@
+@model InstituteWeb.Models.ViewModels.SubjectViewModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Usuario> SignInManager
+@inject UserManager<Usuario> UserManager
+    
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div class ="container">
+    <h1 class="text-center">Details</h1>
+    <h4>Subject</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Schedule)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Schedule)
+        </dd>
+        <dt class = "col-sm-2">
+            Maximum Of Students
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Maximum_Number_Of_Students)
+        </dd>
+        
+        <dt class = "col-sm-2">
+            Teacher
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name_Teacher)
+            @Html.DisplayFor(model => model.Last_Name_Teacher)
+        </dd>
+        <dt class = "col-sm-2">
+            Career
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name_Career)
+        </dd>
+    </dl>
+    <div>
+        @if (SignInManager.IsSignedIn(User)&&User.IsInRole("Administrator"))
+        {
+            <a asp-area="" asp-controller="Subjects" asp-action="IndexAll" class="btn bg-secondary btn-md">Back to List</a>
+
+        }else{
+            <a asp-area="" asp-controller="Subjects" asp-action="Index" asp-route-idCareer = "@Model.CareerID" class="btn bg-secondary btn-md">Back to List</a>
+        }
+    </div>
+</div>
+
+
+
+
+

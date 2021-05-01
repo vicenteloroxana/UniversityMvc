@@ -1,0 +1,56 @@
+@model IEnumerable<InstituteWeb.Models.ViewModels.SubjectViewModel>
+
+@{
+    ViewData["Title"] = "Subjects";
+}
+
+<h1>Subjects</h1>
+
+<table class="table container">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Schedule)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Maximum_Number_Of_Students)
+            </th>
+            <th>
+                Teacher
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Schedule)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Maximum_Number_Of_Students)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name_Teacher) 
+                    @Html.DisplayFor(modelItem => item.Last_Name_Teacher) 
+                </td>
+                
+                <td>
+                    <a asp-action="Details" asp-route-idSubject="@item.SubjectID" class="btn btn-primary btn-sm " title="Details">
+                        <i class="fas fa-plus-circle"></i> 
+                    </a> |
+                    <a asp-action="Inscription" asp-route-idSubject="@item.SubjectID" class="btn btn-success btn-sm " title="Sign up">
+                        <i class="fas fa-user-graduate"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,65 @@
+@model IEnumerable<InstituteWeb.Models.ViewModels.TeacherViewModel>
+
+@{
+    ViewData["Title"] = "Teachers";
+}
+
+<div class="container">
+    <h1>Teachers</h1>
+    <a asp-action="Create" class="btn btn-success" asp-controller = "Teachers">Create</a>
+</div>
+<table class="table container">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Last_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DNI)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Active)
+                
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Last_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DNI)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Active) 
+                    
+                </td>
+                
+                <td>
+                    <a asp-action="Details" asp-route-idTeacher="@item.TeacherID" class="btn btn-primary btn-sm " title="Details" asp-controller = "Teachers">
+                        <i class="fas fa-plus-circle"></i> 
+                    </a> |
+                    <a asp-action="Edit" asp-route-idTeacher="@item.TeacherID" title="Edit" class="btn btn-secondary btn-sm" asp-controller = "Teachers">
+                        <i class="fas fa-pencil-alt"></i>
+                    </a> |
+                    <a asp-action="Delete" asp-route-idTeacher="@item.TeacherID" class="btn btn-danger btn-sm " title="Delete" asp-controller = "Teachers">
+                        <i class="far fa-trash-alt"></i>
+                    </a>
+                    
+                    
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
